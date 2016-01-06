@@ -1,10 +1,8 @@
 package com.smilingrob.foosehere.data;
 
-import com.smilingrob.foosehere.match.Match;
+import com.smilingrob.foosehere.match.Round;
 
 import junit.framework.TestCase;
-
-import java.util.List;
 
 /**
  * Test text to round parsing.
@@ -27,17 +25,22 @@ public class TextToMatchTest extends TestCase {
     public void testParseRoundText() throws Exception {
         // GIVEN a list of players that Hexar generated
         // WHEN it is parsed
-        List<Match> matches = TextToMatch.parseRoundText(ROUND_TEXT);
+        Round round = TextToMatch.parseRoundText(ROUND_TEXT);
 
         // THEN it should be valid
-        assertNotNull(matches);
-        assertEquals("All 12 were not parsed, did you forget a newline?", 12, matches.size());
+        assertNotNull(round);
+        assertNotNull(round.getMatches());
+
+        assertEquals("All 12 were not parsed, did you forget a newline?", 12, round.getMatches().size());
 
         // THEN matches should have the right players.
-        assertEquals("Darin", matches.get(1).getTeamOne().get(0).getmName());
-        assertEquals("Terrill", matches.get(3).getTeamTwo().get(1).getmName());
+        assertEquals("Darin", round.getMatches().get(1).getTeamOne().get(0).getName());
+        assertEquals("Terrill", round.getMatches().get(3).getTeamTwo().get(1).getName());
 
         // THEN the player objects should be re-used in different matches
-        assertEquals(matches.get(1).getTeamOne().get(0), matches.get(11).getTeamTwo().get(0));
+        assertEquals(
+                round.getMatches().get(1).getTeamOne().get(0),
+                round.getMatches().get(11).getTeamTwo().get(0)
+        );
     }
 }

@@ -17,11 +17,11 @@ public class Player {
         this.name = name;
     }
 
-    public String getmName() {
+    public String getName() {
         return name;
     }
 
-    public void setmName(String mName) {
+    public void setName(String mName) {
         this.name = mName;
     }
 

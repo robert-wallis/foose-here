@@ -7,6 +7,7 @@ import java.util.List;
  */
 public class Match {
 
+    boolean isMatchPlayed = false;
     List<Player> teamOne;
     List<Player> teamTwo;
 
@@ -19,6 +20,56 @@ public class Match {
     public Match(List<Player> teamOne, List<Player> teamTwo) {
         this.teamOne = teamOne;
         this.teamTwo = teamTwo;
+    }
+
+    /**
+     * Calculate a team name based on player names.
+     *
+     * @param team list of players in the team.
+     * @return tean name.
+     */
+    private static String teamNameFromList(List<Player> team) {
+        String name = "";
+        int playerId = 0;
+        for (Player player : team) {
+            if (playerId > 0) {
+                name += " - ";
+            }
+            name += player.getName();
+            playerId++;
+        }
+        return name;
+    }
+
+    /**
+     * Return the name of the first team.
+     *
+     * @return team name.
+     */
+    public String teamOneName() {
+        return teamNameFromList(teamOne);
+    }
+
+    /**
+     * Return the name of the second team.
+     *
+     * @return team name.
+     */
+    public String teamTwoName() {
+        return teamNameFromList(teamTwo);
+    }
+
+    /**
+     * Has the match been played?
+     *
+     * @return true if the match was played.
+     */
+    public boolean isMatchPlayed() {
+        return isMatchPlayed;
+    }
+
+    public void setIsMatchPlayed(boolean isMatchPlayed) {
+        this.isMatchPlayed = isMatchPlayed;
     }
 
     public List<Player> getTeamOne() {

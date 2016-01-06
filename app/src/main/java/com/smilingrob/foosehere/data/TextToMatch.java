@@ -2,10 +2,10 @@ package com.smilingrob.foosehere.data;
 
 import com.smilingrob.foosehere.match.Match;
 import com.smilingrob.foosehere.match.Player;
+import com.smilingrob.foosehere.match.Round;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -19,7 +19,7 @@ public class TextToMatch {
      * @param roundText match list copy pasted from Hexar.
      * @return list of matches.
      */
-    public static List<Match> parseRoundText(String roundText) {
+    public static Round parseRoundText(String roundText) {
 
         if (roundText == null || roundText.length() == 0) {
             return null;
@@ -64,7 +64,7 @@ public class TextToMatch {
             matchList.add(match);
         }
 
-        return matchList;
+        return new Round(matchList);
     }
 
 }
