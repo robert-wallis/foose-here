@@ -46,12 +46,14 @@ public class RoundFile {
         }
 
         // re-link all the match players with the players
-        for (Match match : round.getMatches()) {
-            List<Player> team1 = replacePlayerObjects(round.getPlayers(), match.getTeamOne());
-            match.setTeamOne(team1);
+        if (round != null) {
+            for (Match match : round.getMatches()) {
+                List<Player> team1 = replacePlayerObjects(round.getPlayers(), match.getTeamOne());
+                match.setTeamOne(team1);
 
-            List<Player> team2 = replacePlayerObjects(round.getPlayers(), match.getTeamTwo());
-            match.setTeamTwo(team2);
+                List<Player> team2 = replacePlayerObjects(round.getPlayers(), match.getTeamTwo());
+                match.setTeamTwo(team2);
+            }
         }
 
         return round;
