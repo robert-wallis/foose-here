@@ -42,4 +42,21 @@ public class Player {
     public String toString() {
         return "Player{" + name + '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+        if (o instanceof Player) {
+            Player op = (Player) o;
+            if (name != null) {
+                String opName = op.getName();
+                return opName != null && name.contentEquals(opName);
+            } else {
+                return op.getName() == null;
+            }
+        }
+        return false;
+    }
 }
