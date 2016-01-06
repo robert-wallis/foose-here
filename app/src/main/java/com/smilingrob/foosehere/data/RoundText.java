@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Transform a text block into a match list.
  */
-public class TextToMatch {
+public class RoundText {
 
     /**
      * Get an object representation of the match list provied by Hexar.
@@ -64,7 +64,8 @@ public class TextToMatch {
             matchList.add(match);
         }
 
-        return new Round(matchList);
+        ArrayList<Player> players = new ArrayList<>(playerMap.values());
+        return new Round(matchList, players);
     }
 
 }

@@ -9,8 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 
-import com.smilingrob.foosehere.data.SaveFile;
-import com.smilingrob.foosehere.data.TextToMatch;
+import com.smilingrob.foosehere.data.RoundFile;
+import com.smilingrob.foosehere.data.RoundText;
 import com.smilingrob.foosehere.match.Match;
 import com.smilingrob.foosehere.match.Round;
 import com.smilingrob.foosehere.ui.MatchListRecyclerAdapter;
@@ -60,13 +60,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        SaveFile.saveRound(getApplicationContext().getFilesDir(), ROUND_SAVE_FILENAME, round);
+        RoundFile.saveRound(getApplicationContext().getFilesDir(), ROUND_SAVE_FILENAME, round);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        round = SaveFile.loadRound(getApplicationContext().getFilesDir(), ROUND_SAVE_FILENAME);
+        round = RoundFile.loadRound(getApplicationContext().getFilesDir(), ROUND_SAVE_FILENAME);
         refreshRoundData();
     }
 
@@ -120,8 +120,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             roundText = editText.getText().toString();
-            round = TextToMatch.parseRoundText(roundText);
-            SaveFile.saveRound(getApplicationContext().getFilesDir(), ROUND_SAVE_FILENAME, round);
+            round = RoundText.parseRoundText(roundText);
+            RoundFile.saveRound(getApplicationContext().getFilesDir(), ROUND_SAVE_FILENAME, round);
             refreshRoundData();
         }
     }

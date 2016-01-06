@@ -4,6 +4,8 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import com.smilingrob.foosehere.match.Match;
+import com.smilingrob.foosehere.match.Player;
 import com.smilingrob.foosehere.match.Round;
 
 import java.io.File;
@@ -11,11 +13,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Save data.
  */
-public class SaveFile {
+public class RoundFile {
 
     static Gson gson = new Gson();
 
@@ -27,7 +30,7 @@ public class SaveFile {
      * @return The list of timers found in file.
      */
     public static Round loadRound(@NonNull File filesDir, @NonNull String filename) {
-        Round round = null;
+        Round round;
         File file = new File(filesDir, filename);
         try {
             FileReader fileReader = new FileReader(file);
@@ -35,9 +38,18 @@ public class SaveFile {
             fileReader.close();
         } catch (FileNotFoundException ex) {
             // no problem, it's the first time they ran the app, or they just cleared cache
+            return null;
         } catch (IOException | JsonSyntaxException | NullPointerException ex) {
             ex.printStackTrace();
+            return null;
         }
+
+        // re-link all the match players with the players
+        for (Match match : round.getMatches()) {
+            replacePlayerObjects(round.getPlayers(), match.getTeamOne());
+            replacePlayerObjects(round.getPlayers(), match.getTeamTwo());
+        }
+
         return round;
     }
 
@@ -59,6 +71,22 @@ public class SaveFile {
             // no problem, it's the first time they ran the app, or they just cleared cache
         } catch (IOException | JsonSyntaxException | NullPointerException ex) {
             ex.printStackTrace();
+        }
+    }
+
+    /**
+     * Replace the players in the destination that match the players in the source, with the source player objects.
+     *
+     * @param source      full player list.
+     * @param destination team list.
+     */
+    private static void replacePlayerObjects(List<Player> source, List<Player> destination) {
+        for (Player realPlayer : source) {
+            for (int i = 0; i < destination.size(); i++) {
+                if (destination.get(i).equals(realPlayer)) {
+                    destination.set(i, realPlayer);
+                }
+            }
         }
     }
 }
