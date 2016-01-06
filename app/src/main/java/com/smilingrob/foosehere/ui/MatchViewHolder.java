@@ -52,6 +52,16 @@ public class MatchViewHolder extends RecyclerView.ViewHolder {
         bindPlayerToToggleButton(player3, match.getTeamTwo().get(0));
         bindPlayerToToggleButton(player4, match.getTeamTwo().get(1));
 
+        int backgroundColor;
+        if (match.areAllPlayersAvailable()) {
+            //noinspection deprecation
+            backgroundColor = itemView.getResources().getColor(R.color.colorAccentBackground);
+        } else {
+            //noinspection deprecation
+            backgroundColor = itemView.getResources().getColor(R.color.colorBackground);
+        }
+        itemView.setBackgroundColor(backgroundColor);
+
         isBinding = false;
     }
 
