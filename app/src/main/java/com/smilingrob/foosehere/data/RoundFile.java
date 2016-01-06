@@ -81,10 +81,12 @@ public class RoundFile {
      * @param destination team list.
      */
     private static void replacePlayerObjects(List<Player> source, List<Player> destination) {
-        for (Player realPlayer : source) {
-            for (int i = 0; i < destination.size(); i++) {
-                if (destination.get(i).equals(realPlayer)) {
-                    destination.set(i, realPlayer);
+        if (source != null) {
+            for (Player realPlayer : source) {
+                for (int i = 0; i < destination.size(); i++) {
+                    if (destination.get(i).equals(realPlayer)) {
+                        destination.set(i, realPlayer);
+                    }
                 }
             }
         }
