@@ -12,31 +12,50 @@
         android:layout_gravity="center_vertical"
         />
 
-    <TextView
-        android:id="@+id/match_item_team_one"
+    <ToggleButton
+        android:id="@+id/match_item_team_1_player_0"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
-        android:gravity="end"
-        tools:text="Robert - Hexar"
+        android:gravity="center_vertical"
+        tools:textOff="Robert"
+        />
+
+    <ToggleButton
+        android:id="@+id/match_item_team_1_player_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        tools:textOff="Hexar"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:text="@string/match_item_vs"
         />
 
-    <TextView
-        android:id="@+id/match_item_team_two"
+    <ToggleButton
+        android:id="@+id/match_item_team_2_player_0"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
-        tools:text="Terrill - Kennedy"
+        android:gravity="center_vertical"
+        tools:textOff="Terrill"
+        />
+
+    <ToggleButton
+        android:id="@+id/match_item_team_2_player_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        tools:textOff="Kennedy"
         />
 </LinearLayout>

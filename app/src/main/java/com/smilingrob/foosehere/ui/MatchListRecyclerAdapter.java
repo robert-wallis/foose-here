@@ -19,25 +19,26 @@ public class MatchListRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.
 
     List<Match> matchList = new ArrayList<>();
     LayoutInflater layoutInflater;
+    MatchViewHolder.MatchViewActions matchViewActionsListener;
 
     /**
      * List of matches.
      *
      * @param context activity.
      */
-    public MatchListRecyclerAdapter(Context context) {
+    public MatchListRecyclerAdapter(Context context, MatchViewHolder.MatchViewActions matchViewActionsListener) {
         this.layoutInflater = LayoutInflater.from(context);
+        this.matchViewActionsListener = matchViewActionsListener;
     }
 
     public void setMatchList(List<Match> matchList) {
         this.matchList = matchList;
-        notifyDataSetChanged();
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View viewItem = layoutInflater.inflate(R.layout.match_item, parent, false);
-        return new MatchViewHolder(viewItem);
+        return new MatchViewHolder(viewItem, matchViewActionsListener);
     }
 
     @Override

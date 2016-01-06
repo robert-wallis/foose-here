@@ -12,15 +12,17 @@ import android.widget.EditText;
 import com.smilingrob.foosehere.data.RoundFile;
 import com.smilingrob.foosehere.data.RoundText;
 import com.smilingrob.foosehere.match.Match;
+import com.smilingrob.foosehere.match.Player;
 import com.smilingrob.foosehere.match.Round;
 import com.smilingrob.foosehere.ui.MatchListRecyclerAdapter;
+import com.smilingrob.foosehere.ui.MatchViewHolder;
 
 import java.util.List;
 
 /**
  * Main application activity.
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MatchViewHolder.MatchViewActions {
 
     static final String BUNDLE_ROUND_TEXT = "BUNDLE_ROUND_TEXT";
     static final String ROUND_SAVE_FILENAME = "round.json";
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             roundText = savedInstanceState.getString(BUNDLE_ROUND_TEXT);
         }
 
-        matchListRecyclerAdapter = new MatchListRecyclerAdapter(this);
+        matchListRecyclerAdapter = new MatchListRecyclerAdapter(this, this);
 
         findViewById(R.id.activity_main_edit_round).setOnClickListener(new EditRoundClickListener());
         matchListRecyclerView = (RecyclerView) findViewById(R.id.activity_main_match_list);
@@ -78,9 +80,14 @@ public class MainActivity extends AppCompatActivity {
             List<Match> matches = round.getMatches();
             if (matches != null) {
                 matchListRecyclerAdapter.setMatchList(matches);
-                matchListRecyclerView.setAdapter(matchListRecyclerAdapter);
+                matchListRecyclerAdapter.notifyDataSetChanged();
             }
         }
+    }
+
+    @Override
+    public void onPlayerDataUpdated(Player updatedPlayer) {
+        refreshRoundData();
     }
 
     /**

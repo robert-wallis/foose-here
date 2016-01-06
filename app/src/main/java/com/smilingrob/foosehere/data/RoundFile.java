@@ -50,7 +50,7 @@ public class RoundFile {
             List<Player> team1 = replacePlayerObjects(round.getPlayers(), match.getTeamOne());
             match.setTeamOne(team1);
 
-            List<Player> team2 = replacePlayerObjects(round.getPlayers(), match.getTeamOne());
+            List<Player> team2 = replacePlayerObjects(round.getPlayers(), match.getTeamTwo());
             match.setTeamTwo(team2);
         }
 
@@ -90,7 +90,7 @@ public class RoundFile {
             ArrayList<Player> newDest = new ArrayList<>();
             for (Player realPlayer : source) {
                 for (Player destPlayer : destination) {
-                    if (destPlayer.equals(realPlayer)) {
+                    if (destPlayer.getName().equals(realPlayer.getName())) {
                         newDest.add(realPlayer);
                     }
                 }
