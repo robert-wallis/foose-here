@@ -62,14 +62,13 @@ public class MainActivity extends AppCompatActivity implements MatchViewHolder.M
     @Override
     protected void onPause() {
         super.onPause();
-        RoundFile.saveRound(getApplicationContext().getFilesDir(), ROUND_SAVE_FILENAME, round);
+        saveToFile();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        round = RoundFile.loadRound(getApplicationContext().getFilesDir(), ROUND_SAVE_FILENAME);
-        refreshRoundData();
+        loadFromFile();
     }
 
     @Override
@@ -89,6 +88,21 @@ public class MainActivity extends AppCompatActivity implements MatchViewHolder.M
     @Override
     public void onPlayerDataUpdated(Player updatedPlayer) {
         refreshRoundData();
+    }
+
+    /**
+     * Save the round information to the save file.
+     */
+    void loadFromFile() {
+        round = RoundFile.loadRound(getApplicationContext().getFilesDir(), ROUND_SAVE_FILENAME);
+        refreshRoundData();
+    }
+
+    /**
+     * Load the round information from the file.
+     */
+    void saveToFile() {
+        RoundFile.saveRound(getApplicationContext().getFilesDir(), ROUND_SAVE_FILENAME, round);
     }
 
     /**
