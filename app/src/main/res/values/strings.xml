@@ -1,7 +1,10 @@
 <resources>
-    <string name="app_name">Foose Here</string>
+    <string name="app_name">Foos Here</string>
 
     <string name="menu_edit_round">Edit Round</string>
+
+    <string name="round_text_hint">a - b vs. x - y …</string>
+    <string name="round_save">Save</string>
 
     <string name="match_item_vs">vs.</string>
 

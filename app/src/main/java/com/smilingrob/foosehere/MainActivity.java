@@ -109,13 +109,12 @@ public class MainActivity extends AppCompatActivity implements MatchViewHolder.M
      */
     private void showEditRoundDialog() {
         final EditText editText = new EditText(MainActivity.this);
-        editText.setHint("round text");
+        editText.setHint(getText(R.string.round_text_hint));
         editText.setText(roundText);
         new AlertDialog.Builder(MainActivity.this)
-                .setMessage("Edit Round")
-                .setMessage("Paste text from Hexar")
+                .setMessage(getText(R.string.menu_edit_round))
                 .setView(editText)
-                .setPositiveButton("Save", new SaveRoundClickListener(editText))
+                .setPositiveButton(getText(R.string.round_save), new SaveRoundClickListener(editText))
                 .show();
     }
 
