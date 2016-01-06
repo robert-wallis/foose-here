@@ -72,6 +72,26 @@ public class Match {
         this.isMatchPlayed = isMatchPlayed;
     }
 
+    /**
+     * @return true if all players in the match are available to play.
+     */
+    public boolean areAllPlayersAvailable() {
+        if (teamOne != null && teamTwo != null) {
+            for (Player p : teamOne) {
+                if (!p.isHere()) {
+                    return false;
+                }
+            }
+            for (Player p : teamTwo) {
+                if (!p.isHere()) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
     public List<Player> getTeamOne() {
         return teamOne;
     }
