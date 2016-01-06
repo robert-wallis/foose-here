@@ -46,13 +46,13 @@ public class RoundTextTest extends TestCase {
 
 
         // THEN the player objects should be re-used in different matches
-        assertEquals(
-                round.getMatches().get(1).getTeamOne().get(0).hashCode(),
-                round.getMatches().get(11).getTeamTwo().get(0).hashCode()
+        assertSame(
+                round.getMatches().get(1).getTeamOne().get(0),
+                round.getMatches().get(11).getTeamTwo().get(0)
         );
         for (Player player : round.getPlayers()) {
             if (player.getName().equals("Robert")) {
-                assertEquals(player.hashCode(), round.getMatches().get(0).getTeamTwo().get(1).hashCode());
+                assertSame(player, round.getMatches().get(0).getTeamTwo().get(1));
                 break;
             }
         }

@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,8 +47,11 @@ public class RoundFile {
 
         // re-link all the match players with the players
         for (Match match : round.getMatches()) {
-            replacePlayerObjects(round.getPlayers(), match.getTeamOne());
-            replacePlayerObjects(round.getPlayers(), match.getTeamTwo());
+            List<Player> team1 = replacePlayerObjects(round.getPlayers(), match.getTeamOne());
+            match.setTeamOne(team1);
+
+            List<Player> team2 = replacePlayerObjects(round.getPlayers(), match.getTeamOne());
+            match.setTeamTwo(team2);
         }
 
         return round;
@@ -79,16 +83,21 @@ public class RoundFile {
      *
      * @param source      full player list.
      * @param destination team list.
+     * @return new list of destination players with source objects.
      */
-    private static void replacePlayerObjects(List<Player> source, List<Player> destination) {
+    static List<Player> replacePlayerObjects(List<Player> source, List<Player> destination) {
         if (source != null) {
+            ArrayList<Player> newDest = new ArrayList<>();
             for (Player realPlayer : source) {
-                for (int i = 0; i < destination.size(); i++) {
-                    if (destination.get(i).equals(realPlayer)) {
-                        destination.set(i, realPlayer);
+                for (Player destPlayer : destination) {
+                    if (destPlayer.equals(realPlayer)) {
+                        newDest.add(realPlayer);
                     }
                 }
             }
+            return newDest;
+        } else {
+            return destination;
         }
     }
 }
