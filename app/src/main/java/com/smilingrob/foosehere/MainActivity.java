@@ -6,7 +6,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.EditText;
 
 import com.smilingrob.foosehere.data.RoundFile;
@@ -43,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements MatchViewHolder.M
 
         matchListRecyclerAdapter = new MatchListRecyclerAdapter(this, this);
 
-        findViewById(R.id.activity_main_edit_round).setOnClickListener(new EditRoundClickListener());
         matchListRecyclerView = (RecyclerView) findViewById(R.id.activity_main_match_list);
         matchListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         matchListRecyclerView.setAdapter(matchListRecyclerAdapter);
@@ -72,6 +72,25 @@ public class MainActivity extends AppCompatActivity implements MatchViewHolder.M
         refreshRoundData();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        menu.findItem(R.id.main_menu_edit_round).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                showEditRoundDialog();
+                return true;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public void onPlayerDataUpdated(Player updatedPlayer) {
+        refreshRoundData();
+    }
+
     /**
      * Update the recycler view with new round information.
      */
@@ -85,28 +104,19 @@ public class MainActivity extends AppCompatActivity implements MatchViewHolder.M
         }
     }
 
-    @Override
-    public void onPlayerDataUpdated(Player updatedPlayer) {
-        refreshRoundData();
-    }
-
     /**
-     * When someone wants to edit the list of matches.
+     * Show an edit window to paste round text.
      */
-    private class EditRoundClickListener implements View.OnClickListener {
-        @Override
-        public void onClick(View v) {
-
-            final EditText editText = new EditText(MainActivity.this);
-            editText.setHint("round text");
-            editText.setText(roundText);
-            new AlertDialog.Builder(MainActivity.this)
-                    .setMessage("Edit Round")
-                    .setMessage("Paste text from Hexar")
-                    .setView(editText)
-                    .setPositiveButton("Save", new SaveRoundClickListener(editText))
-                    .show();
-        }
+    private void showEditRoundDialog() {
+        final EditText editText = new EditText(MainActivity.this);
+        editText.setHint("round text");
+        editText.setText(roundText);
+        new AlertDialog.Builder(MainActivity.this)
+                .setMessage("Edit Round")
+                .setMessage("Paste text from Hexar")
+                .setView(editText)
+                .setPositiveButton("Save", new SaveRoundClickListener(editText))
+                .show();
     }
 
     /**

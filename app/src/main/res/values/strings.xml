@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Foose Here</string>
 
-    <string name="activity_main_edit_round">Edit Round</string>
+    <string name="menu_edit_round">Edit Round</string>
 
     <string name="match_item_vs">vs.</string>
 

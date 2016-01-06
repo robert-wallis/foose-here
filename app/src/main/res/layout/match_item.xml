@@ -14,21 +14,21 @@
 
     <ToggleButton
         android:id="@+id/match_item_team_1_player_0"
+        style="@style/PlayerName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
-        android:gravity="center_vertical"
         tools:textOff="Robert"
         />
 
     <ToggleButton
         android:id="@+id/match_item_team_1_player_1"
+        style="@style/PlayerName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
-        android:gravity="center_vertical"
         tools:textOff="Hexar"
         />
 
@@ -41,21 +41,21 @@
 
     <ToggleButton
         android:id="@+id/match_item_team_2_player_0"
+        style="@style/PlayerName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
-        android:gravity="center_vertical"
         tools:textOff="Terrill"
         />
 
     <ToggleButton
         android:id="@+id/match_item_team_2_player_1"
+        style="@style/PlayerName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
-        android:gravity="center_vertical"
         tools:textOff="Kennedy"
         />
 </LinearLayout>

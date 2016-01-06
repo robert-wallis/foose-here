@@ -57,8 +57,9 @@ public class MatchViewHolder extends RecyclerView.ViewHolder {
 
     /**
      * Make sure the toggle button has all the data and actions set up.
+     *
      * @param toggleButton toggle button for the player.
-     * @param player player data.
+     * @param player       player data.
      */
     private void bindPlayerToToggleButton(ToggleButton toggleButton, Player player) {
         toggleButton.setTextOn(player.getName());
