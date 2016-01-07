@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorBackground">#ffffff</color>
-    <color name="colorPrimary">#737373</color>
-    <color name="colorPrimaryDark">#353535</color>
-    <color name="colorAccent">#40a3ff</color>
-    <color name="colorAccentBackground">#cfe8ff</color>
+    <color name="matchAvailableColor">#ef6c00</color>
+    <color name="matchInactiveColor">#BDBDBD</color>
+
+    <color name="headerColor">#2196F3</color>
+
+
+    <color name="colorPrimary">@color/foos_here_material_orange</color>
+    <color name="colorPrimaryDark">@color/foos_here_material_orange</color>
+    <color name="colorAccent">@android:color/white</color>
+
+    <color name="textPrimary">#cccccc</color>
+    <color name="foos_here_material_orange">#ff6f00</color>
+
+
 </resources>

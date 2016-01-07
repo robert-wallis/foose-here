@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.ToggleButton;
 
 import com.smilingrob.foosehere.R;
@@ -39,10 +40,10 @@ public class MatchViewHolder extends RecyclerView.ViewHolder {
         isBinding = true;
 
         CheckBox played = (CheckBox) itemView.findViewById(R.id.match_item_check);
-        ToggleButton player1 = (ToggleButton) itemView.findViewById(R.id.match_item_team_1_player_0);
-        ToggleButton player2 = (ToggleButton) itemView.findViewById(R.id.match_item_team_1_player_1);
-        ToggleButton player3 = (ToggleButton) itemView.findViewById(R.id.match_item_team_2_player_0);
-        ToggleButton player4 = (ToggleButton) itemView.findViewById(R.id.match_item_team_2_player_1);
+        Switch player1 = (Switch) itemView.findViewById(R.id.match_item_team_1_player_0);
+        Switch player2 = (Switch) itemView.findViewById(R.id.match_item_team_1_player_1);
+        Switch player3 = (Switch) itemView.findViewById(R.id.match_item_team_2_player_0);
+        Switch player4 = (Switch) itemView.findViewById(R.id.match_item_team_2_player_1);
 
         played.setChecked(match.isMatchPlayed());
         played.setOnCheckedChangeListener(new MatchPlayedCheckListener(match));
@@ -55,27 +56,26 @@ public class MatchViewHolder extends RecyclerView.ViewHolder {
         int backgroundColor;
         if (match.areAllPlayersAvailable()) {
             //noinspection deprecation
-            backgroundColor = itemView.getResources().getColor(R.color.colorAccentBackground);
+            backgroundColor = itemView.getResources().getColor(R.color.matchAvailableColor);
         } else {
             //noinspection deprecation
-            backgroundColor = itemView.getResources().getColor(R.color.colorBackground);
+            backgroundColor = itemView.getResources().getColor(R.color.matchInactiveColor);
         }
         itemView.setBackgroundColor(backgroundColor);
-
         isBinding = false;
     }
 
     /**
      * Make sure the toggle button has all the data and actions set up.
      *
-     * @param toggleButton toggle button for the player.
+     * @param playerSwitch toggle button for the player.
      * @param player       player data.
      */
-    private void bindPlayerToToggleButton(ToggleButton toggleButton, Player player) {
-        toggleButton.setTextOn(player.getName());
-        toggleButton.setTextOff(player.getName());
-        toggleButton.setChecked(player.isHere());
-        toggleButton.setOnCheckedChangeListener(new PlayerNameCheckListener(player));
+    private void bindPlayerToToggleButton(Switch playerSwitch, Player player) {
+//        playerSwitch.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        playerSwitch.setText(player.getName());
+        playerSwitch.setChecked(player.isHere());
+        playerSwitch.setOnCheckedChangeListener(new PlayerNameCheckListener(player));
     }
 
     /**
