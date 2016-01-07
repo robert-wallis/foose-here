@@ -1,61 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="horizontal">
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_gravity="center"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginTop="20dp"
+    card_view:contentPadding="8dp"
+    card_view:theme="@style/PlayerCard"
 
-    <CheckBox
-        android:id="@+id/match_item_check"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        />
+    card_view:cardUseCompatPadding="false"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardBackgroundColor="@color/matchInactiveColor">
 
-    <ToggleButton
-        android:id="@+id/match_item_team_1_player_0"
-        style="@style/PlayerName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="1"
-        tools:textOff="Robert"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ToggleButton
-        android:id="@+id/match_item_team_1_player_1"
-        style="@style/PlayerName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="1"
-        tools:textOff="Hexar"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="3">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:text="@string/match_item_vs"
-        />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:weightSum="8">
 
-    <ToggleButton
-        android:id="@+id/match_item_team_2_player_0"
-        style="@style/PlayerName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="1"
-        tools:textOff="Terrill"
-        />
+                <Switch
+                    android:id="@+id/match_item_team_1_player_0"
+                    style="@style/PlayerSwitch"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="4"
+                    tools:text="Robert" />
 
-    <ToggleButton
-        android:id="@+id/match_item_team_2_player_1"
-        style="@style/PlayerName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="1"
-        tools:textOff="Kennedy"
-        />
-</LinearLayout>
+                <Switch
+                    android:id="@+id/match_item_team_1_player_1"
+                    style="@style/PlayerSwitch"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="4"
+                    android:checked="false"
+                    android:text="testing"
+                    tools:text="Hexar" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/match_item_vs"
+                        android:textColor="@android:color/white"
+                        android:textSize="32dp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/match_item_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Switch
+                    android:id="@+id/match_item_team_2_player_0"
+                    style="@style/PlayerSwitch"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="4"
+                    tools:text="Robert"
+                    android:textColor="@android:color/white" />
+
+                <Switch
+                    android:id="@+id/match_item_team_2_player_1"
+                    style="@style/PlayerSwitch"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="4"
+                    tools:text="Hexar" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
