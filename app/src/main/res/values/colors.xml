@@ -3,7 +3,7 @@
     <color name="matchAvailableColor">#ef6c00</color>
     <color name="matchInactiveColor">#BDBDBD</color>
 
-    <color name="headerColor">#2196F3</color>
+    <color name="headerColor">@color/primary</color>
 
 
     <color name="colorPrimary">@color/foos_here_material_orange</color>
